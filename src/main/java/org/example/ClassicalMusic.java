@@ -17,9 +17,6 @@ public class ClassicalMusic implements Music{
         return new ClassicalMusic();
     }*/
 
-    public ClassicalMusic() {
-    }
-
     @Override
     public String getSong() {
         return "Песня из класической музыки";
