@@ -16,6 +16,10 @@ public class ClassicalMusic implements Music{
     public static ClassicalMusic getClassicalMusic(){
         return new ClassicalMusic();
     }*/
+
+    public ClassicalMusic() {
+    }
+
     @Override
     public String getSong() {
         return "Песня из класической музыки";
