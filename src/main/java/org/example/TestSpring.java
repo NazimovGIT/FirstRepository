@@ -7,11 +7,9 @@ public class TestSpring {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml");
 
-        Music music = context.getBean("classicalMusic", Music.class);
-        MusicPlayer musicPlayer = new MusicPlayer(music);
-        musicPlayer.playMusic();
 
-
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        System.out.println(musicPlayer.getVolume());
 
         /*Music classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
         // вернется тот же объект из контекста, метод doMyInit()

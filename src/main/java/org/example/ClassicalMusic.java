@@ -2,20 +2,20 @@ package org.example;
 
 import org.springframework.stereotype.Component;
 
-@Component ("classicalMusic")
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component
 public class ClassicalMusic implements Music{
-    /*public void doMyInit(){
+
+    @PostConstruct
+    public void doMyInit(){
         System.out.println("Doing ClassicalMusic initialization");
     }
+    @PreDestroy
     public void doMyDestry(){
         System.out.println("Doing ClassicalMusic destruction");
     }
-
-    private ClassicalMusic(){}
-
-    public static ClassicalMusic getClassicalMusic(){
-        return new ClassicalMusic();
-    }*/
 
     @Override
     public String getSong() {
