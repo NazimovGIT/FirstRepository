@@ -9,12 +9,9 @@ public class TestSpring {
                 SpringConfig.class
         );
 
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 
-        MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
-        MusicPlayer musicPlayer2 = context.getBean("musicPlayer", MusicPlayer.class);
-
-        musicPlayer1.playMusic();
-        System.out.println(musicPlayer1==musicPlayer2);
+        musicPlayer.playMusic();
 
         /*Music classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
         // вернется тот же объект из контекста, метод doMyInit()

@@ -8,33 +8,39 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @Component
-//@Scope("prototype")
+@Scope("prototype")
 public class MusicPlayer {
     @Value("${musicPlayer.name}")
     private String name;
     @Value("${musicPlayer.volume}")
     private int volume;
-    private Music music1;
-    private Music music2;
-    @PostConstruct
-    public void doMyInit(){
-
-        System.out.println("Doing MusicPlayer initialization");
-    }
-    @PreDestroy
-    public void doMyDestry(){
-        System.out.println("Doing MusicPlayer destruction");
-    }
+    List<Music> musicList;
+    /*private Music music1;
+    private Music music2;*/
 
     //применяем принцип IoC (инверсия управления)
     @Autowired
     public MusicPlayer(@Qualifier("classicalMusic") Music music1,
+                       @Qualifier("rockMusic") Music music2,
+                       @Qualifier("popMusic") Music music3) {
+        List<Music> musicList = new ArrayList<Music>();
+        musicList.add(music1);
+        musicList.add(music2);
+        musicList.add(music3);
+        this.musicList = musicList;
+    }
+
+    //@Autowired
+    /*public MusicPlayer(@Qualifier("classicalMusic") Music music1,
                        @Qualifier("rockMusic") Music music2) {
         this.music1 = music1;
         this.music2 = music2;
-    }
+    }*/
 
     public int getVolume() {
         return volume;
@@ -45,7 +51,7 @@ public class MusicPlayer {
     }
 
     public void playMusic() {
-        System.out.println("Играет: " + music1.getSong() + ", "
-                + music2.getSong());
+        Random random = new Random();
+        System.out.println(musicList.get(random.nextInt(3)).getSong());
     }
 }
